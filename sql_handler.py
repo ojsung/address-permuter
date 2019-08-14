@@ -12,7 +12,15 @@ class SQLHandler:
         self.cursor.close()
         self.connection.close()
 
-    def add_row(self, entries):
+    def add_row(self, entries: list):
+        """
+        Adds rows using INSERT to the db
+        Args:
+            entries: The list of tuples
+
+        Returns:
+
+        """
         query = ("INSERT INTO Core.planningSiteAddressUnformatted"
                  "(planningSiteAddressUnformattedID, planningSiteAddressUnformattedSourceID, planningSiteID, "
                  "dateAdded, dateLastAccessed, addressLine1, addressLine2) "

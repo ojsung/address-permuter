@@ -5,12 +5,20 @@ import time
 
 
 class SitesCSVHandler:
+    """
+    Takes the CSV of sites and turns it into a list of tuples
+    """
     _planningSiteAddressUnformattedSourceID = 'e6150894-ba19-11e9-8e22-0050568000e2'
     _unix_timestamp: int = time.time()
     reader: object = CSVReader().create_reader_object()
     sql_insertable_data: list = []
 
     def build_sql_insert_data(self):
+        """
+        Uses the shared CSV reader to create the tuple
+        Returns: A list of tuples of sites
+
+        """
         for row in self.reader:
             address_string: str = row[4]
             suite_abbr_string: str = row[5]
