@@ -1,5 +1,5 @@
 from shared.csv_reader import CSVReader
-from variant_handlers.variant_creator import  VariantCreator
+from variants.variant_creator import  VariantCreator
 from uuid import uuid4
 import time
 
@@ -13,7 +13,7 @@ class SitesCSVHandler:
     reader: object = CSVReader().create_reader_object()
     sql_insertable_data: list = []
 
-    def build_sql_insert_data(self):
+    def build_sql_insert_data(self) -> list:
         """
         Uses the shared CSV reader to create the tuple
         Returns: A list of tuples of sites
@@ -34,3 +34,4 @@ class SitesCSVHandler:
                 sql_insert_row.insert(6, variant[1])
                 sql_insert_tuple = tuple(sql_insert_row)
                 self.sql_insertable_data.append(sql_insert_tuple)
+        return self.sql_insertable_data
