@@ -1,26 +1,35 @@
 # address-permuter
-Creates permutations of addresses, then saves them to a db
+Creates permutations of addresses, then saves them, one by one, to a db
+This was created to prevent MySQL from rejecting a large packet.
 
-To start, create a file called "config.py" that has a dictionary named "config_dict"
+To start, edit the file called "config.py" that has a dictionary named "config_dict"
  with the default values you want to use with this application.  It should look like:
+ 
         config_dict = {
+        
             "username": "desired_username",
+            
             "password": "desired_password",
+            
             "host": "desired_host",
+            
             "database": "desired_default_database_or_schema"
+            
             }
 
 Next, create a csv of all the address line 1 variants you want to consider, and
-  put them in a file called "address1_variables.csv".  Your csv should look something like:
-        ALLEY,ALY
-        ANNEX, ANEX,ANX
-        ARCADE,ARCD,ARC
-        AVENUE,AVNU,AVE,AV
-        BAYOU,BYU
-        E,EAST
-        N,NORTH,NOR
-        S,SOUTH
-        W,WEST
+  put them in a file called "address1_variables.csv".  Each line should have all the variants of the abbreviation you want to consider.  Each line should be a different abbreviation..  It should be in all capital letters.  The first line will be ignored.  It should look something like:
+  
+  ABBREVIATIONS
+  
+  ALY,ALLY,ALLEY
+  
+  DR,DRI,DRV,DRIVE
+  
+  E,EAST
+  
+  etc..
+  
   Notice that all the words and abbreviations are capitalized.
 
 Do the same for the variants you want to consider for address line 2, and name it "address2_variables.csv"
