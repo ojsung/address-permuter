@@ -26,7 +26,7 @@ class CSVReader:
         while not file_opened:
             try:
                 with open(self._file_name, newline='') as csv_file:
-                    csv_reader: object = csv.reader(csv_file, dialect='excel')
+                    csv_reader: iter = csv.reader(csv_file, dialect='excel')
                     file_opened = True
                     first_row = next(csv_reader, None)
                     for row in csv_reader:

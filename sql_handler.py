@@ -24,9 +24,9 @@ class SQLHandler:
 
         """
         query = ("INSERT INTO planningSiteAddressUnformatted"
-                 "(planningSiteAddressUnformattedID, planningSiteAddressUnformattedSourceID, planningSiteID, "
+                 "(planningSiteAddressUnformattedSourceID, planningSiteID, "
                  "dateAdded, dateLastAccessed, addressLine1, addressLine2) "
-                 "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                 "VALUES (%s, %s, %s, %s, %s, %s)")
         for entry in entries:
             self.cursor.execute(query, entry)
         self.connection.commit()
