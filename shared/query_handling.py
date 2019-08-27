@@ -45,6 +45,22 @@ def do_or_do_not(do_what: str) -> bool:
     return received_response
 
 
+def get_source_id() -> str:
+    """
+    Asks the user to enter, then verify, the source ID
+   Returns: The Source ID
+    """
+    correct_response: bool = False
+    source_id: str = ''
+    while not correct_response or not source_id:
+        source_id = input("Enter the Source ID: ")
+        print("You entered {}".format(source_id))
+        yes_no: str = input("Is that right? (y/n): ")
+        if yes_no == "y":
+            correct_response = True
+    return source_id
+
+
 def _ask_the_user(query: list) -> dict:
     """
     Asks the user what the values for each dictionary key should be
