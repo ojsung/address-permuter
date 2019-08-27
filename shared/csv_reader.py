@@ -22,16 +22,19 @@ class CSVReader:
         Returns: Reader Object for the CSV
 
         """
-        try:
-            with open(self._file_name, newline='') as csv_file:
-                csv_reader: object = csv.reader(csv_file, dialect='excel')
-                first_row = next(csv_reader, None)
-                for row in csv_reader:
-                    yield row
-        except IOError:
-            print("File was not found.")
-            self._file_name = ''
-            self._file_name_setter()
+        file_opened: bool = False
+        while not file_opened:
+            try:
+                with open(self._file_name, newline='') as csv_file:
+                    csv_reader: iter = csv.reader(csv_file, dialect='excel')
+                    file_opened = True
+                    first_row = next(csv_reader, None)
+                    for row in csv_reader:
+                        yield row
+            except IOError:
+                print("File was not found.")
+                self._file_name = ''
+                self._file_name_setter()
 
     def _file_name_setter(self):
         """

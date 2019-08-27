@@ -1,4 +1,4 @@
-from variant_handlers.permutation_functions import manage_permutations, make_variants_by_csv
+from variants.permutation_functions import manage_permutations, make_variants_by_csv
 
 
 def _create_address_variants(address_list: list, file_name: str) -> list:
